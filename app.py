@@ -16,11 +16,12 @@ def inference(model_inputs:dict) -> dict:
 
     # Parse out your arguments
     prompt = model_inputs.get('prompt', None)
+    tokens = model_inputs.get('max_new_tokens', 100)
     if prompt == None:
         return {'message': "No prompt provided"}
     
     # Run the model
-    result = model(prompt)
+    result = model(prompt, max_new_tokens=tokens)
 
     # Return the results as a dictionary
     return result
